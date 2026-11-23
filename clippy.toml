@@ -1,0 +1,7 @@
+allow-unwrap-in-tests = true
+allow-expect-in-tests = true
+disallowed-types = [
+    { path = "std::net::TcpStream", reason = "neem-thermals never uses the network." },
+    { path = "std::net::TcpListener", reason = "neem-thermals never uses the network." },
+    { path = "std::net::UdpSocket", reason = "neem-thermals never uses the network." },
+]
