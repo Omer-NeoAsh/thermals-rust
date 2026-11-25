@@ -16,7 +16,7 @@ rust_2018_idioms = { level = "warn", priority = -1 }
 
 [workspace.lints.clippy]
 unwrap_used = "warn"
-expected_used = "warn"
+expect_used = "warn"
 dbg_macro = "warn"
 todo = "warn"
 undocumented_unsafe_blocks = "warn"

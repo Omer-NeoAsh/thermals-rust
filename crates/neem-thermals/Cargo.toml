@@ -1,0 +1,11 @@
+[package]
+name = "neem-thermals"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+neem-thermals-core.workspace = true
+
+[lints]
+workspace = true

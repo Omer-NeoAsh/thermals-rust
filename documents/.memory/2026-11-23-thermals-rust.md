@@ -138,7 +138,7 @@ wave5-results.md written; corrections applied to wave4-results.md and wave1-resu
 Omer approved ("Finalize and start"). Spec status Final; Decisions Log + 14-step Implementation plan in Next Steps. /graphify not run (repo nearly empty).
 
 ## Build log
-- Step 1 (workspace, lints, clippy.toml, core types Celsius/SensorId/Value/Sample, main prints sample): code compile-checked in scratchpad/step1 (clippy -D warnings clean, 3 tests pass, run prints "k10temp@0000:00:18.3/temp1: 48.5 °C" + "rejected reading: NaN"). Given to Omer in chat; waiting for him to type it.
+- Step 1 (workspace, lints, clippy.toml, core types Celsius/SensorId/Value/Sample, main prints sample): code compile-checked in scratchpad/step1 (clippy -D warnings clean, 3 tests pass, run prints "k10temp@0000:00:18.3/temp1: 48.5 °C" + "rejected reading: NaN"). Given to Omer in chat. He asked for: one type per file, tests in separate files, named-field structs (verbose). Reworked: lib.rs private mods + pub use; celsius.rs + celsius/tests.rs; sensor_id.rs; value.rs; sample.rs + sample/tests.rs; Celsius{degrees}, SensorId{key}. Re-checked: clippy clean, 4 tests pass, run output unchanged. Saved as user memory rust-code-style.
 - (old) Still to ask (G3): repo public/private, --samples + fake feature, zero sensors policy, PCI-address symlinks in fixtures, weekly deny.
 
 ### Omer's global rules to pass to every spawned agent
