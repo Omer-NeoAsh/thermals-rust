@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Format
+        run: cargo fmt --all --check
+
+      - name: Clippy
+        run: cargo clippy --locked --workspace --all-targets --all-features -- -D warnings
+
+      - name: Test
+        run: cargo test --locked --workspace --all-features
+
+      - name: Install strace
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y strace
+
+      - name: Build the collector with the fake backend
+        run: cargo build --locked -p neem-thermals --features fake
+
+      - name: Collector uses no network
+        run: scripts/no-network-check.sh target/debug/neem-thermals --samples 3
+
+      - name: Negative control (the check must catch curl)
+        run: |
+          status=0
+          scripts/no-network-check.sh curl -s http://127.0.0.1:9 || status=$?
+          test "$status" -eq 3

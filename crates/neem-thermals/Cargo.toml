@@ -4,8 +4,13 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 
+[features]
+fake = []
+
 [dependencies]
 neem-thermals-core.workspace = true
+anyhow.workspace = true
+ctrlc.workspace = true
 
 [lints]
 workspace = true

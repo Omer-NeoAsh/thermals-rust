@@ -9,6 +9,8 @@ license = "GPL-3.0-or-later"
 
 [workspace.dependencies]
 neem-thermals-core = { path = "crates/neem-thermals-core" }
+anyhow = "1"
+ctrlc = { version = "3.5.3", features = ["termination"] }
 
 [workspace.lints.rust]
 unsafe_code = "deny"
